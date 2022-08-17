@@ -1,10 +1,17 @@
 //main file
 const express = require("express")
 const serverless = require("serverless-http")
+const { collection, ObjectId } = require("../config/database")
+
 const app = express()
 const router = express.Router()
+
 router.get("/", (req, res) => {
-    res.send("User List")
+    // res.send("User List")
+    collection.find().toArray((err, result) => {
+        if (err) throw err;
+        res.json(result)
+    })
 })
 router.post("/", (req, res) => {
     res.send("Create New User")
