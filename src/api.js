@@ -2,9 +2,16 @@
 const express = require("express")
 const serverless = require("serverless-http")
 const { collection, ObjectId } = require("../config/database")
+const bodyParser = require("body-parser")
+const cors = require("cors")
+
 
 const app = express()
 const router = express.Router()
+
+//19th August
+app.use(cors())
+app.use(bodyParser.json())
 
 router.get("/", (req, res) => {
     // res.send("User List")
